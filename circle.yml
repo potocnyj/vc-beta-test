@@ -13,7 +13,7 @@ dependencies:
 test:
   pre:
     - bash vc-test-configure.sh
-	- test/load.sh
+    - test/load.sh
   override:
     - go vet ./...
     - go test -race ./...
