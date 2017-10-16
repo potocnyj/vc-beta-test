@@ -8,7 +8,7 @@ mysql < test/init.sql
 echo "Loading data..."
 for i in `seq 1 1000`
 do
-	mysql -e "INSERT INTO telemetry.points (id, ts, value) VALUES (1, $i, FLOOR(RAND() * 1000));"
+	mysql -e "INSERT INTO telemetry.points (counter, ts, value) VALUES (1, $i, FLOOR(RAND() * 1000));"
 done
 
 echo "Done."
