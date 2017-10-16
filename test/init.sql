@@ -1,4 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `telemetry`;
+DROP DATABASE IF EXISTS `telemetry`;
+CREATE DATABASE `telemetry`;
 USE telemetry;
 
 CREATE TABLE `counters` (
