@@ -1,6 +1,6 @@
 # Simple script to generate a bunch of points in the telemetry database.
 
-mysql < init.sql
+mysql < test/init.sql
 
 for i in `seq 1 1000`
 do
