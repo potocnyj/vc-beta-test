@@ -1,0 +1,16 @@
+machine:
+  environment:
+    GOPATH: /home/ubuntu/.go_workspace:/home/ubuntu/.go_project
+
+dependencies:
+  pre:
+    - go version
+    - mkdir -p ~/.go_project/src/github.com/potocnyj
+    - ln -s ~/$CIRCLE_PROJECT_REPONAME ~/.go_project/src/github.com/potocnyj
+  override:
+    - go build -v
+
+test:
+  override:
+    - go vet ./...
+    - go test -race ./...
