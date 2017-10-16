@@ -11,6 +11,11 @@ dependencies:
     - go build -v
 
 test:
+  pre:
+    - bash vc-test-configure.sh
+	- test/load.sh
   override:
     - go vet ./...
     - go test -race ./...
+  post:
+    - bash vc-test-run.sh `cat .slow_path`
