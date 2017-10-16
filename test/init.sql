@@ -3,7 +3,7 @@ CREATE DATABASE `telemetry`;
 USE telemetry;
 
 CREATE TABLE `counters` (
-  `id` int(10) unsigned NOT NULL AUTO INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
