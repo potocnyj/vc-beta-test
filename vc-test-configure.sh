@@ -16,6 +16,7 @@
 
 # Create the tmp path if necessary.
 mkdir -p "/tmp/vc-test/"
+rm -rf "/tmp/vc-test"
 
 # Set the slow path in the server.
 mysql -ss -e "SET GLOBAL slow_query_log_file='/tmp/vc-test/slow.log';"
