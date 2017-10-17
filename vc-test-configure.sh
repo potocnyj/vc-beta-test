@@ -15,7 +15,7 @@
 # as the path to the slow query log, so it's in a known accessible location.
 
 # Create the tmp path if necessary.
-mkdir -p "/tmp/vc-test/slow.log"
+mkdir -p "/tmp/vc-test/"
 
 # Set the slow path in the server.
 mysql -ss -e "SET GLOBAL slow_query_log_file='/tmp/vc-test/slow.log';"
