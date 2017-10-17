@@ -10,17 +10,13 @@
 # set to capture all queries, and we need to capture the name of the logfile.
 # We can do this by connecting to the DB and setting the vars dynamically.
 #
-# Start by setting the slow_log location; we use:
-# /tmp/vc-test/slow.log
-# as the path to the slow query log, so it's in a known accessible location.
+# Start by setting the slow_log location;
+# we'll set it to the current working directory for simplicity.
+slow_log_location="`pwd`/slow.log"
 
-# Create the tmp path if necessary.
-mkdir -p "/tmp/vc-test/"
-rm -rf "/tmp/vc-test"
 
 # Set the slow path in the server.
-mysql -ss -e "SET GLOBAL slow_query_log_file='/tmp/vc-test/slow.log';"
-
+mysql -ss -e "SET GLOBAL slow_query_log_file='$slow_log_location';"
 
 # Turn on the slow_query_log.
 mysql -ss -e "SET GLOBAL slow_query_log=1;"
