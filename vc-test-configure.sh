@@ -10,22 +10,16 @@
 # set to capture all queries, and we need to capture the name of the logfile.
 # We can do this by connecting to the DB and setting the vars dynamically.
 #
-# Start by fetching the slow_log location.
-slow_log_file=`mysql -ss -e "select @@slow_query_log_file;"`
-datadir=""
-if [[ $slow_log_file == /* ]]
-then
-    echo "$slow_log_file is an absolute path"
-else
-    echo "$slow_log_file is a relative path, fetch the datadir to build the absolute path"
-    datadir=`mysql -ss -e "select @@datadir;"`
-    slow_log_file=`echo $datadir | sed 's/\/$//'`/`echo $slow_log_file | sed 's/^[\.\/]*//'`
-    echo "Absolute path: $slow_log_file"
-fi
+# Start by setting the slow_log location; we use:
+# /tmp/vc-test/slow.log
+# as the path to the slow query log, so it's in a known accessible location.
 
-# We need to store the slow_log path for vc-test-run to use,
-# drop a reference to it in the current directory.
-echo "$slow_log_file" > .slow_path
+# Create the tmp path if necessary.
+mkdir -p "/tmp/vc-test/slow.log"
+
+# Set the slow path in the server.
+mysql -ss -e "SET GLOBAL slow_query_log_file='/tmp/vc-test/slow.log';"
+
 
 # Turn on the slow_query_log.
 mysql -ss -e "SET GLOBAL slow_query_log=1;"
