@@ -13,6 +13,7 @@
 # Start by setting the slow_log location;
 # we'll set it to the current working directory for simplicity.
 slow_log_location="`pwd`/slow.log"
+touch slow.log
 chmod 777 slow.log
 
 # Set the slow path in the server.
