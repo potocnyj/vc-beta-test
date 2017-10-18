@@ -69,4 +69,3 @@ cat $SLOW_LOG_PATH | ~/bin/vc-mysql-parse | ~/bin/vc-aggregate
 
 # The cmd-checker runs separately.
 ~/bin/cmd-checker
-
